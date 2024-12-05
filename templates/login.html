@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fin-Assist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="btn-home">Home</a>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Login</h2>
+
+
+            <!-- Flash message for error display -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        
+
+            <form action="{{ url_for('login') }}" method="post" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-auth">Login</button>
+            </form>
+            <p class="switch-page">Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='validation.js') }}"></script>
+    <script>
+        setTimeout(() => {
+            const flashMessages = document.querySelector('.flash-messages');
+            if (flashMessages) {
+                flashMessages.style.display = 'none';
+            }
+        }, 2000); // Dismiss after 5 seconds
+    </script>
+</body>
+</html>

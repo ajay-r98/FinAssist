@@ -1,0 +1,86 @@
+/* Reset default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+/* Main container styling for authentication pages */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Card styling */
+.auth-card {
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #3269a8;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3269a8;
+}
+
+/* Button styling */
+.btn-auth {
+    width: 100%;
+    padding: 12px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-auth:hover {
+    background-color: #275a8d;
+}
+
+/* Optional: Styling for error highlights */
+
+
+input:focus:invalid {
+    outline-color: #e74c3c; /* Red outline for invalid focused input */
+}

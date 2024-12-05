@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('profile') }}" class="btn-prof">Go to Profile</a>
+    <a href="{{ url_for('wallet') }}" class="btn-wa">Wallet</a>
+    <a href="{{ url_for('login') }}" class="btn-log">Log Out</a>
+
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+<script> window.chtlConfig = { chatbotId: "9438739354", display: "page_inline" } </script>
+<div id="chatling-inline-bot" style="width: 80%; height: 500px;"></div>
+<script async data-id="9438739354" data-display="page_inline" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+
+</html>

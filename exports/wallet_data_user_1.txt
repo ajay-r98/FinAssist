@@ -1,0 +1,11 @@
+
+    User: ajay (ID: 1)
+    -------------------------------------
+    Total Income: 300.00
+    Total Expenses: 0.00
+    Balance: 300.00
+    -------------------------------------
+
+    Transactions:
+    2024-10-02 - Income - N/A - $100.00 - N/A
+2024-11-04 - Income - N/A - $200.00 - N/A

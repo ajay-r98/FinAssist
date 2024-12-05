@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+
+</head>
+<body>
+    <a href="{{ url_for('chat') }}" class="btn-chat">Return to Chat</a>
+    <a href="{{ url_for('login') }}" class="btn-log">Log Out</a>
+
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        
+        <!-- Display flash messages for success or error -->
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        
+        
+        <form action="{{ url_for('profile') }}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="{{ user.name or '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" value="{{ user.age or '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ user.email or '' }}" required>
+            </div>
+            <button type="submit" name="action" value="submit" class="btn-submit">Submit</button>
+            <button type="submit" name="action" value="wallet" class="btn-wallet">Go to Wallet</button>
+
+
+        </form>
+    </div>
+</body>
+</html>

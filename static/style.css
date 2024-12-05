@@ -1,0 +1,328 @@
+/* Reset default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100vh;  /* Ensure body takes full viewport height */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+}
+
+/* Main container styling */
+.main-container {
+    position: relative; /* Enables absolute positioning within it */
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Text section styling */
+.text-section {
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 5rem;
+    color: #3269a8;
+    margin-bottom: 10px;
+    position: relative;
+    top: -100px;
+    right: 200px;
+}
+
+.subheading {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+    top: -60px;
+    right: 190px;
+}
+
+.subheading .highlight {
+    color: #3269a8;
+    font-weight: bold;
+}
+
+/* Button styling */
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-signup {
+    background-color: #fff;
+    color: #3269a8;
+    border: 2px solid #3269a8;
+    position: relative;
+    top: -60px;
+    right: 190px;
+}
+
+.btn-signup:hover {
+    background-color: #e6f0ff;
+    color: #275a8d;
+}
+
+.btn-signin {
+    background-color: #3269a8;
+    color: white;
+    border: none;
+    position: relative;
+    top: -60px;
+    right: 190px;
+}
+
+.btn-signin:hover {
+    background-color: #275a8d;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+.image-section {
+    position: absolute;
+    top: -150px; /* Adjust to position the image vertically */
+    right: -250px; /* Adjust to position the image horizontally */
+}
+
+.image-section img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Background shape */
+body::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    background-color: #3269a8;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+/* Switch page link */
+.switch-page {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.switch-page a {
+    color: #3269a8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.switch-page a:hover {
+    color: #275a8d;
+}
+
+.btn-home {
+    position: absolute;
+    top: 20px;       /* Distance from the top of the page */
+    left: 20px;     /* Distance from the right edge of the page */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-home:hover {
+    background-color: #275a8d;
+}
+
+.btn-log {
+    position: absolute;
+    top: 20px;       /* Distance from the top of the page */
+    right: 20px;     /* Distance from the right edge of the page */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-log:hover {
+    background-color: #275a8d;
+}
+
+.btn-prof {
+    position: absolute;
+    top: 20px;       /* Distance from the top of the page */
+    left: 20px;     /* Distance from the right edge of the page */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-prof:hover {
+    background-color: #275a8d;
+}
+
+.btn-wa {
+    position: absolute;
+    top: 20px;       /* Distance from the top of the page */
+    left: 200px;     /* Distance from the right edge of the page */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-wa:hover {
+    background-color: #275a8d;
+}
+
+
+.btn-chat {
+    position: absolute;
+    top: 20px;       /* Distance from the top of the page */
+    left: 20px;     /* Distance from the right edge of the page */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-chat:hover {
+    background-color: #275a8d;
+}
+
+/* Chat container styling */
+.chat-container {
+    width: 100%;
+    max-width: 500px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Chat header */
+.chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Chatbox area */
+.chatbox {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Chat bubbles */
+.user-message, .bot-message {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 1.5;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+    border-bottom-right-radius: 0;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: #333;
+    border-bottom-left-radius: 0;
+}
+
+/* Input container */
+.input-container {
+    display: flex;
+    padding: 1rem;
+    background-color: #f0f2f5;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+

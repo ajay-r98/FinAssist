@@ -1,0 +1,93 @@
+/* Profile page styling */
+.profile-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #3269a8;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus {
+    border-color: #3269a8;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #275a8d;
+}
+
+/* Wallet button styling */
+.btn-wallet {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3269a8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-wallet:hover {
+    background-color: #275a8d;
+}
+
+
+/* Flash message styling */
+.flash-messages {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f0f4f8;
+    border: 1px solid #3269a8;
+    border-radius: 5px;
+}
+
+.flash-messages .alert {
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #3269a8;
+    background-color: #eaf4fc;
+    border-radius: 5px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Fin-Assist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="btn-home">Home</a>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Sign Up</h2>
+            
+            <!-- Flash message for error display -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="error-message">
+                    {{ messages[0] }}
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            <form action="{{ url_for('register') }}" method="post">
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-auth">Register</button>
+            </form>
+            <p class="switch-page">Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            const flashMessages = document.querySelector('.flash-messages');
+            if (flashMessages) {
+                flashMessages.style.display = 'none';
+            }
+        }, 2000); // Dismiss after 5 seconds
+    </script>
+</body>
+</html>

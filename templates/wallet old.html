@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='wallet.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<body>
+    <div class="main-container">
+        <h1>My Wallet</h1>
+
+        <!-- Main Content: Form and Table -->
+        <div class="main-content">
+            <!-- Transaction Form -->
+            <div class="transaction-form">
+                <h2>Add Transaction</h2>
+                <form action="{{ url_for('wallet') }}" method="post">
+                    <label for="type">Type:</label>
+                    <select id="type" name="type" required onchange="toggleCategoryRow()">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+
+                    <!-- Category Row -->
+                    <div id="category-row" style="display: none;">
+                        <label for="category">Category:</label>
+                        <select id="category" name="category">
+                            {% for category in categories %}
+                            <option value="{{ category }}">{{ category }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" step="0.01" required>
+
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" placeholder="Optional">
+
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date">
+
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </div>
+
+            <!-- Transaction Table -->
+            <div class="transaction-table-container">
+                <h2>Recent Transactions</h2>
+                <table class="transaction-table">
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                    {% for transaction in transactions[:10] %}
+                    <tr>
+                        <td>{{ transaction.date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ transaction.type }}</td>
+                        <td>{{ transaction.category or 'N/A' }}</td>
+                        <td>${{ "%.2f"|format(transaction.amount) }}</td>
+                        <td>{{ transaction.description or 'N/A' }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="chart-container">
+                <h2>Monthly Transaction Trends</h2>
+                <canvas id="transactionChart"></canvas>
+            </div>
+            
+
+        </div>
+    </div>
+
+        <!-- Summary Section -->
+        <div class="summary-chart">
+            <h3>Transaction Summary</h3>
+            <canvas id="transactionPieChart"></canvas>
+        </div>
+        
+
+        
+
+    <!-- JavaScript for Toggling Category Row -->
+    <script>
+        function toggleCategoryRow() {
+            const typeSelect = document.getElementById('type');
+            const categoryRow = document.getElementById('category-row');
+
+            if (typeSelect.value === 'expense') {
+                categoryRow.style.display = 'block'; // Show the row
+            } else {
+                categoryRow.style.display = 'none'; // Hide the row
+            }
+        }
+
+        // Ensure the correct initial state on page load
+        document.addEventListener('DOMContentLoaded', toggleCategoryRow);
+    </script>
+    <script>
+        // Data passed from Flask
+        const months = {{ months|tojson }};
+        const incomeData = {{ income_data|tojson }};
+        const expenseData = {{ expense_data|tojson }};
+    
+        // Create the chart
+        const ctx = document.getElementById('transactionChart').getContext('2d');
+        const transactionChart = new Chart(ctx, {
+            type: 'line', // You can also use 'bar'
+            data: {
+                labels: months, // Months as labels
+                datasets: [
+                    {
+                        label: 'Income',
+                        data: incomeData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        fill: true
+                    },
+                    {
+                        label: 'Expenses',
+                        data: expenseData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Income and Expense Trends'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount ($)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        // Function to initialize the pie chart
+        function initializePieChart(totalIncome, totalExpenses) {
+            const ctx = document.getElementById('transactionPieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Income', 'Expenses'],
+                    datasets: [
+                        {
+                            data: [totalIncome, totalExpenses], // Replace with dynamic values
+                            backgroundColor: ['#4CAF50', '#FF5252'], // Green for income, red for expenses
+                            hoverOffset: 4,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                    },
+                },
+            });
+        }
+
+        // Pass dynamic values from the backend here
+        const totalIncome = 0; // This will be dynamically populated
+        const totalExpenses = 0; // This will be dynamically populated
+
+        // Initialize the pie chart
+        initializePieChart(totalIncome, totalExpenses);
+    </script>
+
+    
+
+
+
+
+</body>
+</html>
